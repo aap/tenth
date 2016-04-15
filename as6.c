@@ -118,22 +118,7 @@ Sym syms[] = {
 	{ ".", Abs, 0 },
 	{ "ASCII", Asm, 0 },
 
-	{ "DFAD",  Op, 0110 },
-	{ "DFSB",  Op, 0111 },
-	{ "DFMP",  Op, 0112 },
-	{ "DFDV",  Op, 0113 },
-	{ "DMOVE", Op, 0120 },
-	{ "DMOVN", Op, 0121 },
-	{ "FIX",   Op, 0122 },
-		{ "XBLT", Op, 0123 },
-	{ "DMOVEM",Op, 0124 },
-	{ "DMOVNM",Op, 0125 },
-	{ "FIXR",  Op, 0126 },
-	{ "FLTR",  Op, 0127 },
-	{ "UFA",   Op, 0130 },
-	{ "DFN",   Op, 0131 },
 	{ "FSC",   Op, 0132 },
-
 	{ "IBP",   Op, 0133 },
 	{ "ILDB",  Op, 0134 },
 	{ "LDB",   Op, 0135 },
@@ -145,7 +130,7 @@ Sym syms[] = {
 	{ "FADM",  Op, 0142 },
 	{ "FADB",  Op, 0143 },
 	{ "FADR",  Op, 0144 },
-	{ "FADRI", Op, 0145 },
+	{ "FADRL", Op, 0145 },
 	{ "FADRM", Op, 0146 },
 	{ "FADRB", Op, 0147 },
 	{ "FSB",   Op, 0150 },
@@ -153,7 +138,7 @@ Sym syms[] = {
 	{ "FSBM",  Op, 0152 },
 	{ "FSBB",  Op, 0153 },
 	{ "FSBR",  Op, 0154 },
-	{ "FSBRI", Op, 0155 },
+	{ "FSBRL", Op, 0155 },
 	{ "FSBRM", Op, 0156 },
 	{ "FSBRB", Op, 0157 },
 	{ "FMP",   Op, 0160 },
@@ -161,7 +146,7 @@ Sym syms[] = {
 	{ "FMPM",  Op, 0162 },
 	{ "FMPB",  Op, 0163 },
 	{ "FMPR",  Op, 0164 },
-	{ "FMPRI", Op, 0165 },
+	{ "FMPRL", Op, 0165 },
 	{ "FMPRM", Op, 0166 },
 	{ "FMPRB", Op, 0167 },
 	{ "FDV",   Op, 0170 },
@@ -169,7 +154,7 @@ Sym syms[] = {
 	{ "FDVM",  Op, 0172 },
 	{ "FDVB",  Op, 0173 },
 	{ "FDVR",  Op, 0174 },
-	{ "FDVRI", Op, 0175 },
+	{ "FDVRL", Op, 0175 },
 	{ "FDVRM", Op, 0176 },
 	{ "FDVRB", Op, 0177 },
 
@@ -210,7 +195,6 @@ Sym syms[] = {
 	{ "ASH",   Op, 0240 },
 	{ "ROT",   Op, 0241 },
 	{ "LSH",   Op, 0242 },
-	{ "JFFO",  Op, 0243 },
 	{ "ASHC",  Op, 0244 },
 	{ "ROTC",  Op, 0245 },
 	{ "LSHC",  Op, 0246 },
@@ -219,11 +203,10 @@ Sym syms[] = {
 	{ "BLT",   Op, 0251 },
 	{ "AOBJP", Op, 0252 },
 	{ "AOBJN", Op, 0253 },
-
 	{ "JRST",  Op, 0254 },
 	{ "JFCL",  Op, 0255 },
 	{ "XCT",   Op, 0256 },
-	{ "MAP",   Op, 0257 },
+
 	{ "PUSHJ", Op, 0260 },
 	{ "PUSH",  Op, 0261 },
 	{ "POP",   Op, 0262 },
@@ -321,7 +304,6 @@ Sym syms[] = {
 	{ "ANDCAB",Op, 0413 },
 	{ "SETM",  Op, 0414 },
 	{ "SETMI", Op, 0415 },
-		{ "XMOVEI",Op, 0415 },
 	{ "SETMM", Op, 0416 },
 	{ "SETMB", Op, 0417 },
 	{ "ANDCM", Op, 0420 },
@@ -1144,7 +1126,8 @@ void
 dumpmem(word start, word end)
 {
 	for(; start < end; start++)
-		printf("%lo: %lo\n", start, mem[start]);
+		if(mem[start])
+			printf("%lo: %lo\n", start, mem[start]);
 }
 
 void
