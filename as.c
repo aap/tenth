@@ -989,7 +989,7 @@ opline(void)
 	w = expr().value;
 	t = token();
 	if(t.type == Comma)
-		ac = w & (type == 0 ? 017 : 0177);
+		ac = w & (type == 0 ? 017 : 0774);
 	else{
 		y = w & 0777777;
 		if(t.type == LParen)
@@ -1034,7 +1034,7 @@ end:
 			y;
 	else
 		inst = op << 21 |
-		       ac << 26 |
+		       ac << 24 |	/* this is correct */
 			i << 22 |
 			x << 18 |
 			y;
