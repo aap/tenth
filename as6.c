@@ -1049,7 +1049,8 @@ assemble(void)
 			if(t.s->v.type == Op ||
 			   t.s->v.type == Io){
 				PUSHT(t);
-				mem[dot->v.value++] = opline();
+				mem[dot->v.value] = opline();
+				dot->v.value++;
 				t = token();
 				break;
 			}
